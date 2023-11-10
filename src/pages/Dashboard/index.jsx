@@ -1,22 +1,34 @@
 import React, { useState } from 'react';
 import { Container } from './styles';
+import FakeOldLoadingScreen from './FakeOldLoadingScreen';
+
 
 const Dashboard = () => {
-  const [isSwitchOn, setSwitchOn] = useState(false);
-
-  const handleSwitchToggle = (value) => {
-    setSwitchOn(value);
+  const SWITCH_STATES = {
+    INITIAL: 'initial',
+    OLD: 'old',
+    NEW: 'new',
   };
+
+  const [switchState, setSwitchState] = useState(SWITCH_STATES.INITIAL);
+
+  const handleSwitchChange = (state) => {
+    setSwitchState(state);
+  };
+
 
   return (
     <Container>
       <header>
-        <button onClick={() => handleSwitchToggle(true)}>Old loading screen</button>
-        <button onClick={() => handleSwitchToggle(false)}>New loading screen</button>
+        <button onClick={() => handleSwitchChange(SWITCH_STATES.INITIAL)}>Reset</button>
+        <button onClick={() => handleSwitchChange(SWITCH_STATES.OLD)}>Old</button>
+        <button onClick={() => handleSwitchChange(SWITCH_STATES.NEW)}>New</button>
       </header>
       <main>
-        {/* Your page content goes here */}
-        {isSwitchOn ? <p>Switch is ON</p> : <p>Switch is OFF</p>}
+
+        {switchState === SWITCH_STATES.INITIAL && <FakeOldLoadingScreen />}
+        {switchState === SWITCH_STATES.OLD && <p>OLD state</p>}
+        {switchState === SWITCH_STATES.NEW && <p>new state</p>}
       </main>
     </Container>
   );
