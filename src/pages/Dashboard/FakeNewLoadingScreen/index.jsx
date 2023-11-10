@@ -2,23 +2,32 @@ import React, { useState, useEffect } from 'react';
 import { AiOutlineLoading3Quarters as LoadingIcon } from 'react-icons/ai';
 import { Container, TicketList, FakeLoading } from './styles';
 
-const FakeOldLoadingScreen = () => {
-  const [isLoading, setIsLoading] = useState(false);
+const FakeNewLoadingScreen = () => {
+  const [isLoading1, setIsLoading1] = useState(false);
+  const [isLoading2, setIsLoading2] = useState(false);
+
   useEffect(() => {
-    setIsLoading(true);
+    setIsLoading1(true);
+    setIsLoading2(true);
     setTimeout(() => {
-      setIsLoading(false);
+      setIsLoading1(false);
+    }, 1000);
+
+    setTimeout(() => {
+      setIsLoading2(false);
     }, 6000);
   }, []);
-  if(isLoading) {
+
+  if(isLoading1) {
     return (
     <Container>
       <FakeLoading>
+        <span className="loadingContainer">
           <LoadingIcon />
+        </span>  
       </FakeLoading>
     </Container>
     );
-
   }
 
   return (
@@ -32,13 +41,23 @@ const FakeOldLoadingScreen = () => {
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque quis magni fugit impedit ullam, totam illo laborum vitae sunt dicta, reprehenderit doloremque recusandae eius sed eveniet laboriosam dolor, voluptates nulla.</p>
           </div>
           <TicketList>
+          {isLoading2 ? (
+            <FakeLoading>
+            <span className="loadingContainer">
+              <LoadingIcon />
+            </span>  
+          </FakeLoading>
+          ) : (
+            <>
             <li>Passagem aérea  |  Toronto  |  Estocolmo  |  22/09  </li>
             <li>Passagem aérea  |  Toronto  |  Estocolmo  |  22/09  </li>
             <li>Passagem aérea  |  Toronto  |  Estocolmo  |  22/09  </li>
             <li>Passagem aérea  |  Toronto  |  Estocolmo  |  22/09  </li>
             <li>Passagem aérea  |  Toronto  |  Estocolmo  |  22/09  </li>
             <li>Passagem aérea  |  Toronto  |  Estocolmo  |  22/09  </li>
-          </TicketList>
+            </>
+            )}
+            </TicketList>
         </main>
         <aside>Propaganda</aside>
       </section>
@@ -47,4 +66,4 @@ const FakeOldLoadingScreen = () => {
   );
 }
 
-export default FakeOldLoadingScreen;
+export default FakeNewLoadingScreen;

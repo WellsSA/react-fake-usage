@@ -88,7 +88,7 @@ export const TicketList = styled.div`
   width: 100%;
   margin-bottom: 12px;
   border-radius: 12px;
-  max-height: 400px;
+  height: 400px;
   overflow-y: auto;
   background: #bfbfbf;
   display: flex;

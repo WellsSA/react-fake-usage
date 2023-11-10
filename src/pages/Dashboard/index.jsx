@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Container } from './styles';
 import FakeOldLoadingScreen from './FakeOldLoadingScreen';
+import FakeNewLoadingScreen from './FakeNewLoadingScreen';
+import BlankScreen from './BlankScreen';
 
 
 const Dashboard = () => {
@@ -21,14 +23,14 @@ const Dashboard = () => {
     <Container>
       <header>
         <button onClick={() => handleSwitchChange(SWITCH_STATES.INITIAL)}>Reset</button>
-        <button onClick={() => handleSwitchChange(SWITCH_STATES.OLD)}>Old</button>
-        <button onClick={() => handleSwitchChange(SWITCH_STATES.NEW)}>New</button>
+        <button onClick={() => handleSwitchChange(SWITCH_STATES.OLD)}>Old web screen</button>
+        <button onClick={() => handleSwitchChange(SWITCH_STATES.NEW)}>New web screen</button>
       </header>
       <main>
 
-        {switchState === SWITCH_STATES.INITIAL && <FakeOldLoadingScreen />}
-        {switchState === SWITCH_STATES.OLD && <p>OLD state</p>}
-        {switchState === SWITCH_STATES.NEW && <p>new state</p>}
+        {switchState === SWITCH_STATES.INITIAL && <BlankScreen />}
+        {switchState === SWITCH_STATES.OLD && <FakeOldLoadingScreen />}
+        {switchState === SWITCH_STATES.NEW && <FakeNewLoadingScreen />}
       </main>
     </Container>
   );

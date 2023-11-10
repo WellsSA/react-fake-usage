@@ -1,25 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { AiOutlineLoading3Quarters as LoadingIcon } from 'react-icons/ai';
-import { Container, TicketList, FakeLoading } from './styles';
+import React from 'react';
+import { Container, TicketList } from './styles';
 
-const FakeOldLoadingScreen = () => {
-  const [isLoading, setIsLoading] = useState(false);
-  useEffect(() => {
-    setIsLoading(true);
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 6000);
-  }, []);
-  if(isLoading) {
-    return (
-    <Container>
-      <FakeLoading>
-          <LoadingIcon />
-      </FakeLoading>
-    </Container>
-    );
-
-  }
+const BlankScreen = () => {
 
   return (
     <Container>
@@ -47,4 +29,4 @@ const FakeOldLoadingScreen = () => {
   );
 }
 
-export default FakeOldLoadingScreen;
+export default BlankScreen;
